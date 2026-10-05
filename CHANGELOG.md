@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.19.0
+
+### Added
+
+- **Push a repo's brain from the terminal** (#422): a loopback handoff hands the
+  browser a finished brain instead of a half-built one — the push waits for the
+  build, then lands the browser on the result.
+- **A public repo can be read without installing the App** (#349): access is
+  answered on its own, without first reading the repo.
+
+### Fixed
+
+- **The finished push lands in Trail** (#417), not on a local page, and signup
+  goes to Trail's own front end rather than the shared agents host.
+- **A repo read runs in a child process** so the app keeps answering while it
+  works, and the digest finishes sending before the child disconnects.
+- **Public reads borrow an installation token** instead of falling back to the
+  anonymous rate limit.
+
+## 0.18.0
+
+### Added
+
+- **Trail Brain integration** (#322): graft can build a *brain* from a repo and
+  carry its rules into every `ask` — a two-way link, so retrieval is shaped by
+  the team context a brain accumulates, not the code graph alone.
+- **A brain verifies the checkout before it mines** (#344): graft checks the
+  working copy against the repo a brain expects, so rules are never mined from
+  the wrong tree.
+
+### Fixed
+
+- **A brain refreshes its rules from upkeep** (#343), so a single empty pull no
+  longer leaves it stuck without rules.
+
 ## 0.17.0
 
 ### Added
